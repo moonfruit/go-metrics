@@ -22,7 +22,7 @@ var (
 // Capture new values for the Go garbage collector statistics exported in
 // debug.GCStats.  This is designed to be called as a goroutine.
 func CaptureDebugGCStats(r Registry, d time.Duration) {
-	for _ = range time.Tick(d) {
+	for range time.Tick(d) {
 		CaptureDebugGCStatsOnce(r)
 	}
 }
@@ -41,8 +41,8 @@ func CaptureDebugGCStatsOnce(r Registry) {
 	debug.ReadGCStats(&gcStats)
 	debugMetrics.ReadGCStats.UpdateSince(t)
 
-	debugMetrics.GCStats.LastGC.Update(int64(gcStats.LastGC.UnixNano()))
-	debugMetrics.GCStats.NumGC.Update(int64(gcStats.NumGC))
+	debugMetrics.GCStats.LastGC.Update(gcStats.LastGC.UnixNano())
+	debugMetrics.GCStats.NumGC.Update(gcStats.NumGC)
 	if lastGC != gcStats.LastGC && 0 < len(gcStats.Pause) {
 		debugMetrics.GCStats.Pause.Update(int64(gcStats.Pause[0]))
 	}

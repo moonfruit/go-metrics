@@ -185,7 +185,7 @@ func (r *StandardRegistry) Unregister(name string) {
 func (r *StandardRegistry) UnregisterAll() {
 	r.mutex.Lock()
 	defer r.mutex.Unlock()
-	for name, _ := range r.metrics {
+	for name := range r.metrics {
 		r.stop(name)
 		delete(r.metrics, name)
 	}
@@ -196,7 +196,7 @@ func (r *StandardRegistry) register(name string, i interface{}) error {
 		return DuplicateMetric(name)
 	}
 	switch i.(type) {
-	case Counter, Gauge, GaugeFloat64, Healthcheck, Histogram, Meter, Timer:
+	case Counter, Gauge, GaugeFloat64, Healthcheck, Histogram, Meter, Timer, ResettingTimer:
 		r.metrics[name] = i
 	}
 	return nil
