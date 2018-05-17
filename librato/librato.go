@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/pentaglobal/pentagram/metrics"
+	"github.com/pentaglobal/penta-dlos/metrics"
 )
 
 // a regexp for extracting the unit from time.Duration.String

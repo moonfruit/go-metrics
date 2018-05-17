@@ -6,8 +6,9 @@ import (
 	uurl "net/url"
 	"time"
 
-	"github.com/pentaglobal/pentagram/metrics"
 	"github.com/influxdata/influxdb/client"
+
+	"github.com/pentaglobal/penta-dlos/metrics"
 )
 
 type reporter struct {

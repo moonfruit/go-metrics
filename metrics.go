@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pentaglobal/pentagram/log"
+	"github.com/pentaglobal/penta-dlos/common/log"
 )
 
 // Enabled is checked by the constructor functions for all of the

@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/pentaglobal/pentagram/metrics"
+	"github.com/pentaglobal/penta-dlos/metrics"
 )
 
 type exp struct {
